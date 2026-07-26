@@ -34,14 +34,18 @@ def game_quiz():
             "태국": "ㅌㄱ"}
 
         while True:
+            current_quiz_bank = quiz_bank.copy()
             correct_count = 0
 
             for i in range(1, 4):
-                print(f"\n📝 [{i}번째 문제]")
+                print(f"\n[{i}번째 문제]")
 
-                # 문제 랜덤 뽑기
-                country, initial = random.choice(list(quiz_bank.items()))
-                print(f"초성: {initial}")
+                # 복사본 딕셔너리에서 무작위로 하나 선택
+                country, initial = random.choice(list(current_quiz_bank.items()))
+                print(f"초성 힌트: {initial}")
+
+                # 중복 방지
+                del current_quiz_bank[country]
 
                 # 정답 입력받기
                 answer = input("이 국가는 어디일까요?: ").strip()
