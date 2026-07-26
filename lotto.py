@@ -57,4 +57,5 @@ def game_lotto():
             print("\n로또 번호 맞추기 게임을 다시 시작합니다!")
             continue
         elif answer.lower() == "n":
+            print("\n메인 화면으로 돌아갑니다.")
             break

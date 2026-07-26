@@ -41,4 +41,5 @@ def game_upDown():
                 count = 0                                     # 시도 횟수 리셋
                 continue
             elif answer.lower() == "n":
+                print("\n메인 화면으로 돌아갑니다.")
                 break
