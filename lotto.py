@@ -52,10 +52,18 @@ def game_lotto():
             print("아쉽게도 낙첨입니다. 다음 기회에!")
 
         # 게임 계속 여부
-        answer = input("\n게임을 계속 진행하겠습니까? ( Y / N ) ")
-        if answer.lower() == "y":
-            print("\n로또 번호 맞추기 게임을 다시 시작합니다!")
+        retry_game = False
+
+        while True:
+            answer = input("\n게임을 계속 진행하겠습니까? ( Y / N ) ")
+            if answer.lower() == "y":
+                print("\n로또 번호 맞추기 게임을 다시 시작합니다!")
+                break
+            elif answer.lower() == "n":
+                print("\n메인 화면으로 돌아갑니다.")
+                return
+            else:
+                print("\nY or N 중에서 다시 입력해주세요. ")
+
+        if retry_game:
             continue
-        elif answer.lower() == "n":
-            print("\n메인 화면으로 돌아갑니다.")
-            break

@@ -34,9 +34,19 @@ def game_rps():
             print("컴퓨터가 이겼습니다😭😭😭")
 
         # 게임 계속 여부
-        answer = input("\n게임을 계속 진행하겠습니까? ( Y / N ) ")
-        if answer.lower() == "y":
-            print("\n가위바위보 게임을 다시 시작합니다!")
+        retry_game = False
+
+        while True:
+            answer = input("\n게임을 계속 진행하겠습니까? ( Y / N ) ")
+            if answer.lower() == "y":
+                print("\n가위바위보 게임을 다시 시작합니다!")
+                retry_game = True
+                break
+            elif answer.lower() == "n":
+                print("\n메인 화면으로 돌아갑니다.")
+                return
+            else:
+                print("\nY or N 중에서 다시 입력해주세요. ")
+
+        if retry_game:
             continue
-        elif answer.lower() == "n":
-            break

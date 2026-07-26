@@ -2,7 +2,7 @@
 import random
 import time
 
-def russian_roulette():
+def game_roulette():
     while True:
         # 게임 시작 화면
         print('''
@@ -28,7 +28,7 @@ def russian_roulette():
         while True:
             print(f"\n현재 탄창 상태: 총 6칸 중 총알 {gun.count(1)}개 장전됨")
 
-            # 💡 [핵심] 턴에 따른 행동 선택
+            # 턴에 따른 행동 선택
             if turn == "플레이어":
                 print("--------------------------------")
                 print(" 1: 그냥 방아쇠 당기기")
@@ -38,13 +38,11 @@ def russian_roulette():
 
                 if choice == "2":
                     print("\n드르륵...!! 탄창을 무작위로 다시 섞었습니다!")
-                    # 현재 위치(current_gun) 이후의 남은 칸들만 분리해서 섞기
                     remains = gun[current_gun:]
                     random.shuffle(remains)
                     gun[current_gun:] = remains
                     time.sleep(0.8)
             else:
-                # 컴퓨터: 남은 칸 중 총알 확률이 50% 이상이면 섞음
                 remain_slots = gun[current_gun:]
                 hit_chance = remain_slots.count(1) / len(remain_slots)
 
@@ -71,13 +69,20 @@ def russian_roulette():
                 else:
                     print("컴퓨터가 쓰러졌습니다!\n 🎉 당신의 승리 🎉")
 
-                answer = input("\n게임을 계속 진행하겠습니까? ( Y / N ) ")
-                if answer.lower() == "y":
-                    print("\n러시안 룰렛 게임을 다시 시작합니다!")
-                    break
-                elif answer.lower() == "n":
-                    print("\n메인 화면으로 돌아갑니다.")
-                    exit()
+                # 💡 [들여쓰기 및 구조 수정] Y/N 검증 루프
+                while True:
+                    answer = input("\n게임을 계속 진행하겠습니까? ( Y / N ) ")
+                    if answer.lower() == "y":
+                        print("\n러시안 룰렛 게임을 다시 시작합니다!")
+                        restart_game = True  # 💡 새 게임 시작 신호 켜기
+                        break  # Y/N 루프 탈출
+                    elif answer.lower() == "n":
+                        print("\n메인 화면으로 돌아갑니다.")
+                        return  # 함수 종료 및 main 복귀
+                    else:
+                        print("Y or N 중에서 다시 입력해주세요.")
+
+                break  # 💡 격발(내부) while 루프를 완전히 탈출합니다.
 
             # 빈 총인 경우
             else:
@@ -106,3 +111,6 @@ def russian_roulette():
                         print("🚨 이미 모든 탄창에 총알이 가득 찼습니다 🚨")
 
                     round_shots = 0
+
+        if restart_game:
+            continue
