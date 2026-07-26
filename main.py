@@ -1,8 +1,8 @@
-from rps import game_rps
-from upDown import game_upDown
-from lotto import game_lotto
-from roulette import game_roulette
-from quiz import game_quiz
+from game.rps import game_rps
+from game.upDown import game_upDown
+from game.lotto import game_lotto
+from game.roulette import game_roulette
+from game.quiz import game_quiz
 
 while True:
     # 메뉴 출력
