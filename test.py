@@ -1,31 +1,39 @@
 import random
 
 print('''
-   ===== 가위바위보 게임 =====
-   가위바위보 게임에 시작합니다.
-   ''')
+       ======= 👍업다운 게임👎 =======
+           업다운 게임을 시작합니다.
+       ''')
 
-choice = ["가위", "바위", "보"]
+    # 정답 무작위 선택
+number = random.randint(1, 50)
+    # 시도 횟수 카운트
+count = 0
 
 while True:
-    user = input("가위, 바위, 보 중 하나를 입력해주세요: ")
-    computer = random.choice(choice)
+        # 사용자에게 입력받기
+    user = int(input("숫자를 입력해주세요: "))
+    count += 1
 
-    if user not in choice:
-        print("가위, 바위, 보 중에서 입력해주세요.")
+        # 잘못된 입력 확인
+    if not 1 <= user <= 50:
+        print("1~50 중의 숫자 하나를 입력해주세요. ")
         continue
 
-    print(f"당신: {user} / 컴퓨터: {computer}")
-
-    if user == computer:
-        print("비겼습니다.")
-    elif user == "가위" and computer == "보" or user == "바위" and computer == "가위" or user == "보" and computer == "바위":
-        print("🎉당신이 이겼습니다🎉")
+        # 승패 판정
+    if user < number:
+        print("🔺 UP!")
+    elif user > number:
+        print("🔻 DOWN!")
     else:
-        print("컴퓨터가 이겼습니다😭😭😭")
+        print(f"🎉 정답입니다! 🎉\n{count}번 만에 맞추셨습니다")
 
-    answer = input("\n게임을 계속 진행하겠습니까? ( Y / N ) ")
-    if answer.lower() == "y":
-        continue
-    elif answer.lower() == "n":
-        break
+            # 게임 계속 여부
+        answer = input("\n게임을 계속 진행하겠습니까? ( Y / N ) ")
+        if answer.lower() == "y":
+            print("\n업다운 게임을 다시 시작합니다!")
+            number = random.randint(1, 50)          # 새로운 정답으로 리셋
+            count = 0                                     # 시도 횟수 리셋
+            continue
+        elif answer.lower() == "n":
+            break
