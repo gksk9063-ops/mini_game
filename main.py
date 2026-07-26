@@ -3,7 +3,6 @@ from upDown import game_upDown
 from lotto import game_lotto
 from roulette import game_roulette
 from quiz import game_quiz
-from typing import game_typing
 
 while True:
     # 메뉴 출력
@@ -14,7 +13,6 @@ while True:
     3. 로또 번호 맞추기
     4. 러시안 룰렛
     5. 국가 이름 초성 퀴즈
-    6. 미니 타자 연습
     0. 게임 종료
     ========================
     ''')
@@ -32,8 +30,6 @@ while True:
         game_roulette()                 # 러시안 룰렛 진행
     elif i == 5:
         game_quiz()                     # 초성 퀴즈 진행
-    elif i == 6:
-        game_typing()                   # 미니 타자 연습 진행
     elif i == 0:
         print("미니 오락실의 문을 닫겠습니다.\n다음에 또 오세요👋👋👋")
         break
